@@ -1,4 +1,5 @@
 print("\033c\033[43;30m\nboard\n")
+#print("\033c\033[43;30m\nboard\n")
 def build(lena,incx,incy):
     x=0
     y=0
@@ -13,7 +14,12 @@ def build(lena,incx,incy):
     return list1 
 def mark(list1,array1,value):
     for n in list1:
-        array1[n[1]][n[0]]=value
+        
+        xx=n[0]
+        yy=n[1]
+        
+        array1[yy][xx]=value
+           
     return array1
 def draw(arrays):
     print("\033c\033[43;30m\n")
@@ -26,7 +32,9 @@ def draw(arrays):
         counts=0
         
         for n in range(len(arrays[nn])):
-            print(arrays[nn][n],end="")
+            i=arrays[nn][n]
+            #print(i)
+            print(i,end="")
             counts=counts+1
         print((len(a)-counts)*" "+a[counts2])
         counts2=counts2+1
@@ -52,17 +60,14 @@ def saves(files,arrays):
         f1.write("\n")
     f1.close()
 def board2d(x,y):
-    a=[]
-    aa=[]
-    aaa=" "
-    for nn in range(x):
-        aa=aa+[aaa]
-    for n in range(y):
-        a=a+[aa]
-    return a
+    # corrigido para evitar que todas as linhas sejam a mesma referência
+    return [[" " for _ in range(x)] for _ in range(y)]
 
 
-a=board2d(16,16)
+
+a=board2d(15,15)
 aaa=build(8,2,2)
+#print(a)
 a=mark(aaa,a,"X")
+#print(a)
 draw(a)
