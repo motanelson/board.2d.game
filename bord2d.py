@@ -1,4 +1,20 @@
 print("\033c\033[43;30m\nboard\n")
+def build(lena,incx,incy):
+    x=0
+    y=0
+    z=0
+    list1=[]
+    for n in range(lena):
+        l1=[x,y]
+        list1=list1+[l1]
+        x=x+incx
+        y=y+incy
+        
+    return list1 
+def mark(list1,array1,value):
+    for n in list1:
+        array1[n[1]][n[0]]=value
+    return array1
 def draw(arrays):
     print("\033c\033[43;30m\n")
     a="0123456789ABCDEF"
@@ -38,7 +54,7 @@ def saves(files,arrays):
 def board2d(x,y):
     a=[]
     aa=[]
-    aaa="X"
+    aaa=" "
     for nn in range(x):
         aa=aa+[aaa]
     for n in range(y):
@@ -47,4 +63,6 @@ def board2d(x,y):
 
 
 a=board2d(16,16)
+aaa=build(8,2,2)
+a=mark(aaa,a,"X")
 draw(a)
