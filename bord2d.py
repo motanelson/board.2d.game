@@ -60,8 +60,15 @@ def saves(files,arrays):
         f1.write("\n")
     f1.close()
 def board2d(x,y):
-    # corrigido para evitar que todas as linhas sejam a mesma referência
-    return [[" " for _ in range(x)] for _ in range(y)]
+    a=" "
+    b=[]
+    c=[]
+    for xx in range(x):
+        b=b+[a]
+    for yy in range(y):
+        c=c+[b.copy()]
+    
+    return c
 
 
 
