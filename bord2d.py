@@ -1,5 +1,30 @@
 print("\033c\033[43;30m\nboard\n")
 #print("\033c\033[43;30m\nboard\n")
+def loads(files):
+    ll=True
+    ti=0
+    xi=0
+    yi=0
+    a=[]
+    f1=open(files,"r")
+    ttt=f1.read()
+    f1.close()
+    yyy=ttt.split("\n")
+    
+    yi=len(yyy)
+    for y in range(yi):
+        xxx=yyy[y].split(",")
+        xi=len(xxx)
+        if ll:
+            a=board2d(xi,yi)
+        ll=False
+        for x in range(xi):
+            b=xxx[x].strip()
+            if b=="":
+                a[y][x]=" "
+            else:
+                a[y][x]=b
+    return a  
 def build(lena,incx,incy):
     x=0
     y=0
@@ -64,9 +89,11 @@ def board2d(x,y):
     return [[" " for _ in range(x)] for _ in range(y)]
 
 
-a=board2d(15,15)
-aaa=build(8,2,2)
+#a=board2d(15,15)
+a=loads("xy.csv")
+#aaa=build(8,2,2)
 #print(a)
-a=mark(aaa,a,"X")
+#a=mark(aaa,a,"X")
 #print(a)
 draw(a)
+#saves("xy.csv",a)
